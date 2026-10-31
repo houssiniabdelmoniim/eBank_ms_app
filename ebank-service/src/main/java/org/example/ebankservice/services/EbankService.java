@@ -17,7 +17,6 @@ public class EbankService {
     public List<BankAccount> getAllBankAccounts(){
         return accountRepository.findAll();
     }
-
     public BankAccount getBankAccountById(String id){
         return accountRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("Account not found"));
