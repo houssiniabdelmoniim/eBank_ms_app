@@ -4,7 +4,9 @@ import org.example.ebankservice.entities.BankAccount;
 import org.example.ebankservice.repository.BankAccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class EbankService {
@@ -22,6 +24,8 @@ public class EbankService {
                 .orElseThrow(()->new RuntimeException("Account not found"));
     }
     public BankAccount save(BankAccount bankAccount){
+        bankAccount.setId(UUID.randomUUID().toString());
+        bankAccount.setCreateAt(new Date());
         return accountRepository.save(bankAccount);
     }
 }
