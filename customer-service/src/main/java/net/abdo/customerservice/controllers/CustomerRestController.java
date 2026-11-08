@@ -3,6 +3,7 @@ package net.abdo.customerservice.controllers;
 import net.abdo.customerservice.entities.Customer;
 import net.abdo.customerservice.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class CustomerRestController {
         return customerService.getAllCustomers();
     }
     @GetMapping("/customers/{id}")
-    public Customer findCustomerById(Long id){
+    public Customer findCustomerById(@PathVariable Long id){
         return  customerService.findCustomerById(id);
     }
     @PostMapping("/customers")
@@ -28,3 +29,4 @@ public class CustomerRestController {
         return customerService.saveCustomer(customer);
     }
 }
+
